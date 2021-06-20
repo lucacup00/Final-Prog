@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  font-family: "Ubuntu", sans-serif;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.tondo {
+  padding: 10px;
+  border-radius: 40px;
+}
+
+.meteo {
+  border-radius: 40px;
+  box-shadow: 5px 10px
+    linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+}
+
+.carta {
+  padding: 10px;
+  border-radius: 40px;
+
+  padding: 10px !important;
+  box-shadow: 5px 10px black !important;
+}
+
+.text-new {
+  color: black !important;
+  font-family: Zen Dots;
+}
+
+.text-span-new {
+  color: b !important;
+}
+
+.button-new {
+  color: white !important;
+  background-color: #ff7514 !important;
+}
+
+.elemento1 {
+  background-color: #2650ff !important;
+}
+
+.elemento2 {
+  background-color: #f2a700 !important;
+}
+
+.elemento3 {
+  background-color: #9924ff !important;
+}
+
+.elemento4 {
+  background-color: #07bb9c !important;
+}
+
+.sfumatura {
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.scritta {
+  font-family: LFTEtica;
+  font-size: 25px;
+}
+
+.buttonElement {
+  color: black;
+  border: 2px solid white;
+}
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.a {
+  text-decoration: none !important;
+  color: gray !important;
+}
+
+@media (min-width: 576px) {
+  #video {
+    margin-left: 100px !important;
+    padding: 0px !important;
+  }
+}
