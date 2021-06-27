@@ -3,7 +3,7 @@
 $id=$_GET['IdAnnuncio'];
 echo $id;
 
-include'connessione.php';
+include 'connessione.php';
 
 $sql="DELETE FROM annunci WHERE idAnnuncio= $id";
  $res=mysqli_query($conn,$sql);
@@ -20,4 +20,4 @@ else{
 
 }
 
-?>
+?>

@@ -9,14 +9,22 @@ session_start();?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
 
 
     <style>
+    .border {
+        border: 1px solid red;
+    }
+
+    .hide {
+        overflow-x: hidden;
+    }
+
     .carousel-control-next,
     .carousel-control-prev
 
@@ -24,6 +32,10 @@ session_start();?>
         {
         filter: invert(100%);
         width: 60%
+    }
+
+    .btn-2{
+        backgroud-color:black !important;
     }
     </style>
 
@@ -39,7 +51,7 @@ session_start();?>
         include './Nav.php';
         include './connessione.php';
         include 'links.php';
-            
+        include './alert.php';
         $idAnnuncio=$_GET['IdAnnuncio'];
 
         $sql="SELECT utenti.Nome ,utenti.Telefono, utenti.Cognome , utenti.Email, annunci.NomeKite, annunci.AnnoAquisto, annunci.idAnnuncio , annunci.Costo , annunci.Descrizione , annunci.misura , marca.Marca,Categorie.idCategorie,Categorie.Tipo,Immagini.Percorso,Immagini.KsAnnuncio FROM annunci,utenti,marca,Categorie,Immagini where annunci.KsUtenti=utenti.idUtente AND annunci.KsMarca = marca.idMarca AND annunci.KsCategoria=Categorie.idCategorie AND Immagini.KsAnnuncio=annunci.idAnnuncio   AND annunci.idAnnuncio=$idAnnuncio";
@@ -60,6 +72,7 @@ session_start();?>
             $Marca=$row['Marca'];
             $Costo=$row['Costo'];
             $idAnnuncio=$row['idAnnuncio'];
+            $Telefono=$row['Telefono'];
 
             
                    
@@ -71,18 +84,38 @@ session_start();?>
     <!-- template code here -->
 
 
-    <div class="row featurette my-4">
-        <div class="col-md-7 my-4 d-flex justify-content-center align-items-center flex-column">
-            <h4 class="featurette-heading text-dark">Titolo Kite :<?php echo $nomeKite; ?></h4>
-            <h4 class="text-dark">Misura :<?php  echo $misura.'mq2' ?></h4>
-            <h4 class="text-dark">Anno di acquisto :<?php  echo $annoAcquisto;  ?></h4>
+   
+    <div class="row featurette hide w-100 my-4 rounded-3  shadow-lg">
+        <div class="col-md-7  d-flex justify-content-center align-items-center flex-column shadow-lg">
+            <h2 class="featurette-heading text-dark font2 ">Titolo Annuncio: <?php echo $nomeKite; ?></h2>
+            <h2 class="text-dark font2 ">Misura: <?php  echo $misura.'mq2' ?></h2>
+            <h4 class="text-dark font2 ">Anno di acquisto: <?php  echo $annoAcquisto;  ?></h4>
 
-            <h4 class="text-dark">Marca :<?php  echo $Marca ?></h4>
-            <h4 class="text-dark">Pubblicato da : <?php  echo $cognomeUtente." ".$nomeUtente; ?></h4>
-            <h4 class="text-dark">Email :<?php  echo $emailUtente ?></h4>
-            <h4 class="text-dark">Prezzo :<?php  echo $Costo.'£' ?></h4>
+            <h4 class="text-dark font2 ">Marca: <?php  echo $Marca ?></h4>
+            <h4 class="text-dark font2 ">Pubblicato da: <?php  echo $cognomeUtente." ".$nomeUtente; ?></h4>
+            <h4 class="text-dark font2 ">Email: <?php  echo $emailUtente ?></h4>
+            <h4 class="text-dark font2 ">Prezzo: <?php  echo $Costo.'€' ?></h4>
 
-            <p class="lead">Descrizione :<?php echo $Descrizione;  ?></p>
+            <p class="lead font2">Descrizione: <?php echo $Descrizione;  ?></p>
+            
+
+            <div class="d-flex justify-content-between align-items-center">
+                                
+                           
+            
+            <button type="button" class="btn btn-primary mx-1" data-toggle="modal" data-target="#MexModal">
+                                   Invia un messaggio
+                                </button>
+                                
+                                
+                                <button type="button" class="btn btn-primary mx-1" data-toggle="modal" data-target="#exampleModal">
+                                   Numero di Telefono
+                                </button>
+                               
+                                
+                                
+                            </div>
+            
 
         </div>
         <div class="col">
@@ -99,7 +132,7 @@ session_start();?>
                 $Foto=$row0['Percorso'];
                 
                 if($i==0){
-                echo '<div class="carousel-item active" >
+                echo '<div class="carousel-item   active" >
                     <img src="./img/'.$Foto.'" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         
@@ -133,6 +166,75 @@ session_start();?>
             </button>
 
         </div>
+
+       
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Numero di telefono</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php
+        echo "<h3>+39 $Telefono</h3>";
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--invio messaggio-->
+<div class="modal fade" id="MexModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font2" id="exampleModalLabel"><b>Invia un messaggio</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+      
+    <?php
+      echo'<form action="./email/messaggio.php?IdAnnuncio='.$idAnnuncio.'"  method="POST">
+                     
+                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1"  class="font2"><b>Invia un messaggio</b></label>
+                        <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+               
+               
+                    <a>
+                      <button type="submit" class="btn btn-primary font2">Submit</button>
+                     </a>
+                     
+                 </form>
+                 
+                 </div>
+                 <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                 
+                 </div>
+                 </div>
+                 </div>
+                 </div>';
+?>      
+
+
+
 
 
 

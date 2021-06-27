@@ -20,12 +20,17 @@ $NumeroCivico=$_POST['NumeroCivico'];
 invece un indrzzio particolare deve essere associato ad un solo citta */
 
 /* nella tabella indrizzio cio una chiave esterna che viene dalla tabella citta */
-$newSql="INSERT INTO `indirizzi`(`via`,`numeroCivico`,`KsCitta`) VALUES ('$Via','$NumeroCivico','$Citta')";
+$newSql="INSERT INTO `indirizzi`( `Via`,`numeroCivico`,`KsCitta`) VALUES ('$Via','$NumeroCivico','$Citta')";
 $result=mysqli_query($conn,$newSql);
 
-if(!$result){
-    echo 'something went wrong';
+
+
+
+if($result){
+    echo 'entrata';
 } 
+
+
 
 
 
@@ -34,8 +39,9 @@ if(!$result){
 $sqlFetch="SELECT * FROM `indirizzi` WHERE `KsCitta`='$Citta'";
 $resultNew=mysqli_query($conn,$sqlFetch);
 
- if(!$resultNew){
-    echo 'something went wrong';
+
+ if($resultNew){
+    echo 'è andato buon fine';
 } 
 $data=mysqli_fetch_assoc($resultNew);
 $idIndirizzo=$data['idindirizzi'];/* per prendere id */
@@ -50,17 +56,21 @@ $result=mysqli_query($conn,$sql);
 /* find the number of row of that particular email */
 $row=mysqli_num_rows($result);
 if($row>=1){
-   header('Location:./index.php?failedSignup=true');
+    echo "Registrazione non è Andato buon fine";
+    header('Location:./index.php?failedSignup=true'); 
 }else if($Password===$ConfermaPassword){
 
     
     $newEncryptedPassword=password_hash($Password,PASSWORD_BCRYPT);
     $confirmEncryptedPassword=password_hash($ConfermaPassword,PASSWORD_BCRYPT);
 
-   
+  
     $sqlInsert="INSERT INTO `utenti`(`Nome`, `Cognome`, `Email`,`Telefono`, `PasswordUtente`, `ConfermaPassword`, `KsIndirizzi`) 
     VALUES ('$Nome','$Cognome','$Email','$Telefono','$newEncryptedPassword','$confirmEncryptedPassword','$idIndirizzo')";
     $RESULT=mysqli_query($conn,$sqlInsert);
+
+  
+    
     if($RESULT ){
         echo 'eseguito';
 
@@ -87,8 +97,8 @@ if($row>=1){
     
     
     if($RESULT && $RCarrel ){
-        
-        header('Location:./index.php?Signup=true');
+        echo "Registrazione è Andato buon fine";
+          header('Location:./index.php?Signup=true');  
         exit();
     }else{
         ?>
@@ -96,10 +106,12 @@ if($row>=1){
 alert('Alert something went wrong');
 </script>
 <?php 
-        header('Location:./index.php');
+echo "inside all fine";
+       header('Location:./index.php');
     } 
 }else{
-        header('Location:./index.php?passwordWrong=true');
+    echo "Password Sbagliata";
+          header('Location:./index.php?passwordWrong=true'); 
     }
 }
  

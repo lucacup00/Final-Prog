@@ -18,10 +18,23 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
+    <link href="style.css" rel="stylesheet">
+
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
+    <style>
+         .button-visita {
+	background-color: black !important;
+	color: white !important;
+}
+
+    </style>
+
+
+</head>
 
 
 <body class="skin">
@@ -32,12 +45,12 @@ session_start();
 ?>
 
 
-        <div class="album py-5 bg-light skin">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <div class="container my-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-                    <?php
+                <?php
                     
                     $ricerca=$_GET['search'];
                     if($ricerca==""){
@@ -57,7 +70,7 @@ session_start();
 
                     $num=mysqli_num_rows($res);
 
-                     echo $num;     
+                         
                     if($num==1){
                     
                                 while($row=mysqli_fetch_assoc($res)){
@@ -92,15 +105,19 @@ session_start();
                                         <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
                                         
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
+                                        
 
-                                            <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
-                                                <button class="btn btn-sm btn button-new">Visita</button>
-                                            </a>
+                                        <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
+                                            <button class="btn btn-sm btn button-visita font">Visita</button>
+                                        </a>
+                                        <a  href="./carrello.php?IdAnnuncio='. $idAnnuncio.'">  
+                                        <span class="iconify" data-icon="noto-v1:shopping-cart" data-inline="false" data-width="35" data-height="35"></span>            
                                             
-                                            </div>
-                                            
-                                        </div>
+                                        </a>
+                            
+                            
+                            
+                                </div>
                                         </div>
                                     </div>
                                     </div>';
@@ -140,30 +157,34 @@ session_start();
                         
                             echo' 
                             <div class="col">
-                            <div class="card shadow-sm carta" >
-                            <img src="./img/'.$Foto.'" class="bd-placeholder-img card-img-top tondo" width="200px" height="400px"/>
-                                <div class="card-body">
-                                <h6 class="text-primary text-new"><span class="text-dark text-span-new">Il nome del Kite</span> :<b>'.$nomeKite.' </b></h6>
+                                <div class="card shadow-sm carta">
+                                    <img src="./img/'.$Foto.'" class="bd-placeholder-img card-img-top tondo" width="200px" height="400px"/>
+                                        <div class="card-body">
+                                            <h6 class="text-primary text-new"><span class="text-dark text-span-new">Il nome del Kite</span> :<b>'.$nomeKite.' </b></h6>
 
-                                <h6  class="text-primary text-new"><span class="text-dark text-span-new">Costo </span>:<b> '.$costo.'$</b></h6>
-                                <h6  class="text-primary text-new"><span class="text-dark text-span-new">Descrizione </span>:<b> '.$Descrizione.'</b></h6>
-                                <h6  class="text-primary text-new"><span class="text-dark text-span-new">Marca </span>:<b> '.$marca.'</b></h6> 
-                                <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
-                                
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
+                                            <h6  class="text-primary text-new"><span class="text-dark text-span-new">Costo </span>:<b> '.$costo.'$</b></h6>
+                                            <h6  class="text-primary text-new"><span class="text-dark text-span-new">Descrizione </span>:<b> '.$Descrizione.'</b></h6>
+                                            <h6  class="text-primary text-new"><span class="text-dark text-span-new">Marca </span>:<b> '.$marca.'</b></h6> 
+                                            <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                        
 
-                                    <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
-                                        <button class="btn btn-sm btn button-new">Visita</button>
-                                    </a>
-                                    
-                                    </div>
-                                    
+                                                    <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
+                                                        <button class="btn btn-sm btn button-new font">Visita</button>
+                                                    </a>
+                                                    <a  href="./carrello.php?IdAnnuncio='. $idAnnuncio.'">  
+                                                    <span class="iconify" data-icon="noto-v1:shopping-cart" data-inline="false" data-width="35" data-height="35"></span>            
+                                                        
+                                                    </a>
+                                        
+                                        
+                                        
+                                            </div>
+                                        </div>
                                 </div>
-                                </div>
-                            </div>
                             </div>';
-                            echo $num2;
+                            
                         }
 
                     } 
@@ -174,8 +195,11 @@ session_start();
 
                     ?>
 
-                </div>
             </div>
         </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+            integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
 
 </body>

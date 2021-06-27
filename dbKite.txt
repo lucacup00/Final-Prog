@@ -81,6 +81,8 @@ ON DELETE set NULL
 CREATE TABLE Carrello( 
     idCarrello INT PRIMARY KEY AUTO_INCREMENT,             
     Datas DATE NOT NULL
+    KsUtente 
+    FOREIGN KEY
   
     );
 

@@ -1,7 +1,7 @@
 <?php
  //Allert ACCOUNT CREATO CON SUCCESSO
  if(isset($_GET['Signup']) && $_GET['Signup'] == true){
-    $alert= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
+    $alert= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
           <strong>Messaggio</strong> Account creato con successo.Puoi Effetuare il login.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
@@ -19,8 +19,8 @@ setTimeout(() => {
 
 // ALLERT PASSWORD NON CORRISPONDONO
 else if(isset($_GET['passwordWrong']) && $_GET['passwordWrong'] == true){
-  $alert1= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-  <strong>Messaggio</strong> Password non corrispondono.
+  $alert1= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Password non corrispondono.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert1;
@@ -37,8 +37,8 @@ setTimeout(() => {
 }
 // ALLERT HAI EFFETTUATO IL LOGIN
 elseif(isset($_GET['loggedIn']) && $_GET['loggedIn'] == true){
-$alert2= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Hai Effetuato il login! 🙂 
+$alert2= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Hai Effetuato il login! 🙂 
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert2;
@@ -54,8 +54,8 @@ setTimeout(() => {
 }
 //ALLERT PASSWORD SBAGLIATA NELLA FASE DI LOGIN
 else if(isset($_GET['passwordErro']) && $_GET['passwordErro'] == true){
-$alert3= '<div class="alert my-0 alert-danger alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Password Errata! 🙂 
+$alert3= '<div class="alert my-0 alert-danger alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Password Errata! 🙂 
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert3;
@@ -71,8 +71,8 @@ setTimeout(() => {
 }
 //UTENTE NON REGISTRATO.
 else if(isset($_GET['signUpFirst']) && $_GET['signUpFirst'] == true){
-$alert4= '<div class="alert my-0 alert-danger alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Registarti Prima!
+$alert4= '<div class="alert my-0 alert-danger alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Registarti Prima!
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert4;
@@ -88,8 +88,8 @@ setTimeout(() => {
 }
 //SEI USCITO DAL TUO ACCOUNT
 else if(isset($_GET['loggedOut']) && $_GET['loggedOut'] == true){
-$alert5= '<div class="alert my-0 alert-danger alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Sei Uscito dal tuo Account!! Accedi Per Tornare
+$alert5= '<div class="alert my-0 alert-danger alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Sei Uscito dal tuo Account!! Accedi Per Tornare
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert5;
@@ -104,8 +104,8 @@ setTimeout(() => {
 }
 }
 else if(isset($_GET['inseritoAnnuncio']) && $_GET['inseritoAnnuncio'] == true){
-$alert6= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Annuncio inserito correttamente
+$alert6= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Annuncio inserito correttamente
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert6;
@@ -120,8 +120,8 @@ setTimeout(() => {
 }
 }
 else if(isset($_GET['inseritoAnnuncioFalito']) && $_GET['inseritoAnnuncioFalito'] == true){
-$alert7= '<div class="alert my-0 alert-danger alert-dismissible fade show" role="alert">
-<strong>Messaggio</strong>Inserimento annuncio Fallito
+$alert7= '<div class="alert my-0 alert-danger alert-dismissible fade show font2" role="alert">
+<strong>Messaggio:</strong> Inserimento annuncio Fallito
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert7;
@@ -137,8 +137,8 @@ setTimeout(() => {
 }
 
 elseif(isset($_GET['formatoNonValido']) && $_GET['formatoNonValido'] == true){
-    $alert8= '<div class="alert my-0 alert-danger alert-dismissible fade show" role="alert">
-    <strong>Messaggio</strong>Formato del File non valido.
+    $alert8= '<div class="alert my-0 alert-danger alert-dismissible fade show font2" role="alert">
+    <strong>Messaggio:</strong> Formato del File non valido.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
   echo $alert8;
@@ -153,8 +153,8 @@ setTimeout(() => {
   }
 }
 elseif(isset($_GET['Modifica']) && $_GET['Modifica'] == true){
-    $alert9= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-    <strong>Messaggio</strong>Annuncio modificato correttamente.
+    $alert9= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+    <strong>Messaggio:</strong> Annuncio modificato correttamente.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
   echo $alert9;
@@ -169,8 +169,8 @@ setTimeout(() => {
   }
 }
 elseif(isset($_GET['Aggiunto']) && $_GET['Aggiunto'] == true){
-    $alert10= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-    <strong>Messaggio</strong> Annuncio inserito correttamente al carrello.
+    $alert10= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+    <strong>Messaggio:</strong> Annuncio inserito correttamente al carrello.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
   echo $alert10;
@@ -185,8 +185,8 @@ setTimeout(() => {
   }
 }
 elseif(isset($_GET['AnnuncioCancellatoCarrello']) && $_GET['AnnuncioCancellatoCarrello'] == true){
-  $alert11= '<div class="alert my-0 alert-success alert-dismissible fade show" role="alert">
-  <strong>Messaggio</strong> Annuncio eliminato tra i preferiti.
+  $alert11= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Annuncio eliminato tra i preferiti.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 echo $alert11;
@@ -195,6 +195,38 @@ if($alert11!=""){
 <script>
 setTimeout(() => {
     window.location = "./Vistacarrello.php";
+}, 2000)
+</script>
+<?php
+}
+}
+elseif(isset($_GET['Mex']) && $_GET['Mex'] == true){
+  $alert12= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Messaggio inviato correttamente.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert12;
+if($alert12!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./Shop.php";
+}, 2000)
+</script>
+<?php
+}
+}
+elseif(isset($_GET['Mex']) && $_GET['Mex'] == false){
+  $alert13= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Messaggio non inviato correttamente.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert13;
+if($alert13!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./Shop.php";
 }, 2000)
 </script>
 <?php

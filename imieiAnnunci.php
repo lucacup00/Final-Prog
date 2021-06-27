@@ -13,7 +13,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
     <title>I tuoi Annunci</title>
 </head>
@@ -112,7 +112,7 @@ session_start();
                             <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
                             
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                                
                            
                                 <a href="./DeleteAnnuncio.php?IdAnnuncio='. $idAnnuncio.'">
                                     <button class="btn mx-1 btn-sm btn-danger">DELETE</button>
@@ -121,7 +121,7 @@ session_start();
                                 <a href="./ModificaAnnuncio.php?IdAnnuncio='. $idAnnuncio.'">
                                     <button class="btn btn-sm btn-warning">MODIFICA</button>
                                 </a>
-                                </div>
+                                
                                 
                             </div>
                             </div>
@@ -149,5 +149,3 @@ session_start();
 </body>
 
 </html>
-
-

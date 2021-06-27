@@ -29,10 +29,27 @@ session_start();
 
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-    <link href="style.css" rel="stylesheet">
+    <link href="NavStyle.css" rel="stylesheet">
+    
+
+    <style>
+         .button-visita {
+	background-color: black !important;
+	color: white !important;
+}
+.searchB {
+	border-radius: 0.7rem !important;
+}
+
+    </style>
+
+    
+</head>
 
 
-<body>
+
+
+<body style="overflow-x: hidden;">
 
 
     <main>
@@ -46,7 +63,7 @@ session_start();
 
 
 
-        <div class="container my-4">
+        <div class="container my-4 py-5">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php
@@ -84,22 +101,22 @@ session_start();
 
                 
                     echo' 
-                    <div class="col">
-                    <div class="card shadow-sm carta" >
+                    <div class="col ">
+                    <div class="card shadow-sm carta effect">
                     <img src="./img/'.$Foto.'" class="bd-placeholder-img card-img-top tondo" width="200px" height="400px"/>
-                        <div class="card-body">
-                         <h6 class="text-primary text-new"><span class="text-dark text-span-new">Il nome del Kite</span> :<b>'.$nomeKite.' </b></h6>
+                        <div class="card-body ">
+                         <h6 class="text-primary text-new"><span class="text-dark text-span-new font">Il nome prodotto</span> :<b class="font">'.$nomeKite.' </b></h6>
            
-                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Costo </span>:<b> '.$costo.'$</b></h6>
-                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Descrizione </span>:<b> '.$Descrizione.'</b></h6>
-                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Marca </span>:<b> '.$marca.'</b></h6> 
-                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
+                        <h6  class="text-primary text-new"><span class="text-dark text-span-new font">Costo </span>:<b class="font"> '.$costo.'€</b></h6>
+                        <h6  class="text-primary text-new"><span class="text-dark text-span-new font">Descrizione </span>:<b class="font"> '.$Descrizione.'</b></h6>
+                        <h6  class="text-primary text-new"><span class="text-dark text-span-new font">Marca </span>:<b class="font"> '.$marca.'</b></h6> 
+                        <h6  class="text-primary text-new"><span class="text-dark text-span-new font">Misura </span>:<b class="font"> '.$misura. 'mq2</b></h6> 
                         
                         <div class="d-flex justify-content-between align-items-center">
                             
 
                             <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
-                                <button class="btn btn-sm btn button-new">Visita</button>
+                                <button class="btn btn-sm btn button-visita font">Visita</button>
                             </a>
                             <a  href="./carrello.php?IdAnnuncio='. $idAnnuncio.'">  
                             <span class="iconify" data-icon="noto-v1:shopping-cart" data-inline="false" data-width="35" data-height="35"></span>            
@@ -144,18 +161,6 @@ include 'modal.php';
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 
-
-
-
-    <!-- bootstrap scripts -->
-    <!-- Latest compiled and minified CSS -->
-
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <scrip src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></scrip>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></scrip>
-    -->
 
 
 </body>

@@ -16,7 +16,10 @@ session_start();
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+
+
     <link href="style.css" rel="stylesheet">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
     <title>Vendita kite usati </title>
 </head>
@@ -33,16 +36,16 @@ session_start();
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
 
         
-    echo '<div class="my-4 container w-75">
+    echo '<div class="my-4 container w-75 py-5">
     <form enctype="multipart/form-data" action="./inserimentoAnnuncio.php" method="POST" class="row align-items-center">
     <div class="mb-3">
-        <label for="NomeLibroEmail1" class="form-label">Titolo</label>
+        <label for="NomeLibroEmail1" class="form-label font2"><b>Titolo Annuncio</b></label>
         <input type="text" class="form-control" name="NomeKite" id="Nomekite" aria-describedby="NomeLibroHelp">
     
     </div>
 
     <div class="mb-3">
-    <label for="NomeLibroEmail1" class="form-label">Scegli la categoria</label>
+    <label for="NomeLibroEmail1" class="form-label font2"><b>Scegli la categoria</b></label>
     <select class="form-select" name="Categoria" aria-label="Default select example">
     <option selected>Scegli la tua categoria</option>';
 
@@ -60,7 +63,7 @@ session_start();
     </div>
 
     <div class="mb-3">
-    <label for="NomeLibroEmail1" class="form-label">Scegli la Marca</label>
+    <label for="NomeLibroEmail1" class="form-label font2"><b>Scegli la Marca</b></label>
     <select class="form-select" name="Marca" aria-label="Default select example">
     <option selected>Scegli La Marca</option>';
 
@@ -77,21 +80,22 @@ session_start();
     echo '</select>
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Misura</label>
+        <label for="exampleInputPassword1" class="form-label font2"><b>Misura</b></label>
         <input type="text" class="form-control" name="misura" >
     </div>
     <div class="mb-3">
-        <label  class="form-label">Descrizione</label>
+        <label  class="form-label font2"><b>Descrizione</b></label>
         <input type="text" class="form-control" name="Descrizione" >
     </div>
     <div class="mb-3">
-        <label  class="form-label">Costo</label>
+        <label  class="form-label font2"><b>Costo</b></label>
         <input type="number" class="form-control" name="Costo" >
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Anno di Acquisto</label>
+        <label for="exampleInputPassword1" class="form-label font2"><b>Anno di Acquisto</b></label>
         <input type="date" class="form-control" name="AnnoDiAcquisto" >
     </div>
+    <label for="exampleInputPassword1" class="form-label font2"><b>Carica Files</b></label>
     <div class="d-flex  align-items-start">
     <input type="file" name="FotoKite[]" class="mx-1 form-control" id="exampleInputEmail1"
         aria-describedby="emailHelp" required>
@@ -113,10 +117,10 @@ session_start();
         //altrimenti Loggati o Registrati per inserire l'annuncio
         echo '<div class="container my-5">
         <div class="jumbotron">
-          <h1 class="display-4">Attenzione</h1>
-          <p class="lead">Devi Registrati pima di inserire Annuncio</p>
-          <a id="anchorDiv" class="text-primary text-decoration-none" data-bs-target="#RegistrationModal" data-bs-toggle="modal" >Registrati qui</a>  
-          <a id="anchorDiv" class=" mx-2 text-danger text-decoration-none" data-bs-target="#LoginModal" data-bs-toggle="modal" >Accedi  qui</a>
+          <h1 class="display-4 ">Attenzione</h1>
+          <p class="lead font2"><b>Devi Registrati pima di inserire Annuncio</b></p>
+          <a id="anchorDiv" class="text-primary text-decoration-none font2" data-bs-target="#RegistrationModal" data-bs-toggle="modal" >Registrati qui</a>  
+          <a id="anchorDiv" class=" mx-2 text-danger text-decoration-none font2" data-bs-target="#LoginModal" data-bs-toggle="modal" >Accedi  qui</a>
         
         </div>
         </div>';

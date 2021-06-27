@@ -28,33 +28,33 @@
 
 
 
- 
+
 //Login modal
- echo'<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+echo '<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="LoginModalLabel">Accedi</h5>
+                 <h5 class="modal-title font2" id="LoginModalLabel"><b>Accedi</b></h5>
                  <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
                  <form action="login.php" method="post">
 
                      <div class="form-group">
-                         <label for="exampleInputPassword1">Email</label>
-                         <input type="Email" class="form-control" name="Email" id="LoginEmail" placeholder="Email">
+                         <label class="font2" for="exampleInputPassword1"><b>Email</b></label>
+                         <input type="Email" class="form-control font2" name="Email" id="LoginEmail" placeholder="Email">
                          <label class="text-danger" id="wr"></label>
                      </div>
                      <div class="form-group">
-                         <label for="exampleInputPassword1">Password</label>
-                         <input type="password" class="form-control" name="Password" id="LoginPassword" placeholder="Password">
-                         <label class="text-danger" id="wr1"></label>
+                         <label class="font2" for="exampleInputPassword1"><b>Password</b></label>
+                         <input type="password" class="form-control font2" name="Password" id="LoginPassword" placeholder="Password">
+                         <a class="text-dark" href="">Password dimenticata?</a>
                      </div>
-                     <button type="submit" class="btn btn-primary">Submit</button>
+                     <button type="submit" class="btn btn-primary font2">Submit</button>
                  </form>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-danger font2" data-bs-dismiss="modal">Close</button>
 
              </div>
          </div>
@@ -67,91 +67,93 @@
 
 
 
- echo'<div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+echo '<div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                 <h5 class="modal-title font2" id="exampleModalLabel "><b>Registrazione</b></h5>
                  <button type="button" class="btn-close button-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
 
                  <form action="registrazione.php" method="post">
                      <div class="mb-3">
-                         <label class="form-label">Nome</label>
+                         <label class="form-label font2"><b>Nome</b></label>
                          <input type="Text" class="form-control" name="Nome" id="Nome" aria-describedby="emailHelp"required>
                          <label class="text-danger" id="wr2"></label>
                      </div>
                      <div class="mb-3">
-                         <label class="form-label">Cognome</label>
+                         <label class="form-label font2">Cognome</label>
                          <input type="Text" class="form-control" name="Cognome" id="Cognome"
                              aria-describedby="emailHelp" required>
                              <label class="text-danger" id="wr3"></label>
 
                      </div>
                     <div class="mb-3">
-                         <label class="form-label">Email</label>
+                         <label class="form-label font2">Email</label>
                          <input type="Text" class="form-control" name="Email" id="Email"
                              aria-describedby="emailHelp" required>
                              <label class="text-danger" id="wr4"></label>
 
                      </div>
                      <div class="mb-3">
-                         <label class="form-label">Password</label>
+                         <label class="form-label font2">Password</label>
                          <input type="password" class="form-control" name="Password" id="Password" required>
                          <label class="text-danger" id="wr5"></label>
                      </div>
                      <div class="mb-3">
-                         <label class="form-label">Conferma Password</label>
+                         <label class="form-label font2">Conferma Password</label>
                          <input type="password" class="form-control" name="ConfermaPassword" id="ConfermaPassword"
                              required>
                              <label class="text-danger" id="wr6"></label>
                      </div>
 
-                     <label class="form-label">Inserisci la tua città</label>
+                     <div class="mb-3">
+                     <label class="form-label font2">Inserisci la tua città</label>
                      <select class="form-select" name="città" aria-label="Default select example">
                      ';
 
-                         
-                      
-                       
-                       
-                      $sql="SELECT * FROM `Citta`";
-                       $res=mysqli_query($conn,$sql);
 
-                      
-                      while($dataFetched=mysqli_fetch_assoc($res)){
-                        $idCitta=$dataFetched['idCitta'];
-                        $cittaAll=$dataFetched['nomeCitta'];
-                              
-                         echo '<option value="'.$idCitta.'">'.$cittaAll.'</option>';
-                      }
-                      
-                      
-                      
-                  echo'</select>
+
+
+
+$sql = "SELECT * FROM `Citta`";
+$res = mysqli_query($conn, $sql);
+
+
+while ($dataFetched = mysqli_fetch_assoc($res)) {
+    $idCitta = $dataFetched['idCitta'];
+    $cittaAll = $dataFetched['nomeCitta'];
+
+    echo '<option value="' . $idCitta . '">' . $cittaAll . '</option>';
+}
+
+
+
+echo '</select>
+</div>
                      <div class="mb-3">
-                         <label class="form-label">Via</label>
+                         <label class="form-label font2"><b>Via</b></label>
                          <input type="Text" class="form-control" name="Via" id="Via" required>
                          <label class="text-danger" id="wr7"></label>
                      </div>
                      <div class="mb-3">
-                         <label class="form-label">Telefono</label>
+                         <label class="form-label font2"><b>Telefono</b></label>
                          <input type="Text" class="form-control" name="Telefono" id="Telefono" required>
                          <label class="text-danger" id="wr8"></label>
                      </div>
                      <div class="mb-3">
-                         <label class="form-label">NumeroCivico</label>
+                         <label class="form-label font2"><b>NumeroCivico</b></label>
                          <input type="Number" class="form-control" name="NumeroCivico" id="numC" required>
                          <label class="text-danger" id="wr9"></label>
                      </div>
 
-                     <button type="submit" name="create" class="btn btn-primary">Submit</button>
+                     <button type="submit" name="create" class="btn btn-primary font2">Submit</button>
                  </form>
 
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-danger font2" data-bs-dismiss="modal">Close</button>
              </div>
 
          </div>

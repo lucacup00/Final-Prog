@@ -22,83 +22,18 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link href="style.css" rel="stylesheet">
+
     <style>
+         .button-visita {
+	background-color: black !important;
+	color: white !important;
+}
 
     </style>
+    
     <title>Shop</title>
 
 </head>
-<style>
-.tondo {
-    padding: 10px;
-    border-radius: 40px;
-}
-
-
-
-.carta {
-    padding: 10px;
-    border-radius: 40px;
-
-    padding: 10px !important;
-    box-shadow: 5px 10px #ff7514 !important;
-
-}
-
-.text-new {
-    color: black !important;
-    font-family: Zen Dots;
-}
-
-.text-span-new {
-    color: b !important;
-}
-
-.button-new {
-    color: white !important;
-    background-color: #ff7514 !important;
-}
-
-.elemento1 {
-    background-color: #2650ff !important;
-
-}
-
-.elemento2 {
-    background-color: #f2a700 !important;
-
-}
-
-.elemento3 {
-    background-color: #9924FF !important;
-
-}
-
-.elemento4 {
-    background-color: #07BB9C !important;
-
-}
-
-.sfumatura {
-    box-shadow: 0 8px 6px -6px black;
-}
-
-.scritta {
-    font-family: LFTEtica;
-    font-size: 25px;
-}
-
-.buttonElement {
-    color: black;
-    border: 2px solid white;
-
-}
-
-a {
-    text-decoration: none !important;
-    color: white !important;
-}
-</style>
 
 <body class="skin">
 
@@ -146,24 +81,27 @@ a {
                 
                     echo' 
                     <div class="col">
-                    <div class="card shadow-sm carta" >
+                    <div class="card shadow-sm carta effect" >
                     <img src="./img/'.$Foto.'" class="bd-placeholder-img card-img-top tondo" width="200px" height="400px"/>
                         <div class="card-body">
                          <h6 class="text-primary text-new"><span class="text-dark text-span-new">Il nome del Kite</span> :<b>'.$nomeKite.' </b></h6>
            
-                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Costo </span>:<b> '.$costo.'$</b></h6>
+                        <h6  class="text-primary text-new"><span class="text-dark text-span-new">Costo </span>:<b> '.$costo.'€</b></h6>
                         <h6  class="text-primary text-new"><span class="text-dark text-span-new">Descrizione </span>:<b> '.$Descrizione.'</b></h6>
                         <h6  class="text-primary text-new"><span class="text-dark text-span-new">Marca </span>:<b> '.$marca.'</b></h6> 
                         <h6  class="text-primary text-new"><span class="text-dark text-span-new">Misura </span>:<b> '.$misura. 'mq2</b></h6> 
                         
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
+                        <div class="d-flex justify-content-between align-items-center">  
 
-                            <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
-                                <button class="btn btn-sm btn button-new">Visita</button>
-                            </a>
+                                <a href="./templat.php?IdAnnuncio='. $idAnnuncio.'">
+                                    <button class="btn btn-sm btn button-visita font">Visita</button>
+                                </a>
+                                <a  href="./carrello.php?IdAnnuncio='. $idAnnuncio.'">  
+                                <span class="iconify" data-icon="noto-v1:shopping-cart" data-inline="false" data-width="35" data-height="35"></span>            
                             
-                            </div>
+                        </a>
+
+                        </div>
                             
                         </div>
                         </div>
@@ -176,7 +114,6 @@ a {
             </div>
         </div>
     </main>
-
 
 
 
