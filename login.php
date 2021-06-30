@@ -3,11 +3,11 @@ include 'connessione.php';
 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $Email=$_POST['Email'];
-    $Password=$_POST['Password'];
+    $Email=mysqli_real_escape_string($conn,$_POST['Email']);
+    $Password=mysqli_real_escape_string($conn,$_POST['Password']);
 
 
-    $sql="SELECT * FROM `utenti` WHERE `Email`='$Email'";
+    $sql="SELECT * FROM `utenti` WHERE `Email`='$Email' AND `Status`='Active'";
     $res=mysqli_query($conn,$sql);
     
     $rows=mysqli_num_rows($res);

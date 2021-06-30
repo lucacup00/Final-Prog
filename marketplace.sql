@@ -2,8 +2,8 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Giu 12, 2021 alle 09:58
+-- Host: localhost
+-- Creato il: Giu 28, 2021 alle 12:14
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.6
 
@@ -46,7 +46,8 @@ CREATE TABLE `annunci` (
 INSERT INTO `annunci` (`idAnnuncio`, `NomeKite`, `AnnoAquisto`, `Descrizione`, `Costo`, `KsUtenti`, `KsMarca`, `KsCategoria`, `misura`) VALUES
 (2, 'rpx', '2021-03-23', 'Come', 1010, 1, 1, 1, 12),
 (3, 'asylum', '2021-03-18', 'un po graffiata', 350, 1, 1, 2, 141),
-(4, 'vegas', '2021-06-09', 'vecchio', 500, 1, 1, 1, 13);
+(4, 'vegas', '2021-06-09', 'vecchio', 500, 1, 1, 1, 13),
+(5, 'muta ride engine lunga', '2021-06-15', 'come nuova', 300, 4, 2, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -56,8 +57,22 @@ INSERT INTO `annunci` (`idAnnuncio`, `NomeKite`, `AnnoAquisto`, `Descrizione`, `
 
 CREATE TABLE `carrello` (
   `idCarrello` int(11) NOT NULL,
-  `Datas` date NOT NULL
+  `Datas` date NOT NULL,
+  `KsUtenti` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `carrello`
+--
+
+INSERT INTO `carrello` (`idCarrello`, `Datas`, `KsUtenti`) VALUES
+(1, '2021-06-26', 3),
+(2, '2021-06-26', 4),
+(3, '2021-06-27', 9),
+(4, '2021-06-28', 10),
+(5, '2021-06-28', 11),
+(6, '2021-06-28', 12),
+(7, '2021-06-28', 13);
 
 -- --------------------------------------------------------
 
@@ -109,8 +124,8 @@ CREATE TABLE `citta` (
 --
 
 INSERT INTO `citta` (`idCitta`, `nomeCitta`, `cap`) VALUES
-(1, 'ROCCAGORGA', 0),
-(2, 'ROCCAGORGA', 4010);
+(1, 'ROCCAGORGA', 4010),
+(3, 'LATINA', 4100);
 
 -- --------------------------------------------------------
 
@@ -134,7 +149,8 @@ INSERT INTO `immagini` (`idImmagine`, `Percorso`, `KsAnnuncio`) VALUES
 (4, 'asylum.jpg', 3),
 (5, '0.jpg', 4),
 (6, '00.jpg', 4),
-(7, '000.jpg', 4);
+(7, '000.jpg', 4),
+(8, 'muta.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -154,7 +170,27 @@ CREATE TABLE `indirizzi` (
 --
 
 INSERT INTO `indirizzi` (`idindirizzi`, `Via`, `numeroCivico`, `KsCitta`) VALUES
-(1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 12, 1);
+(1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 12, 1),
+(3, 'genova', 13, 3),
+(4, 'yyyyyyyyyyyyyyyyyyyyyy', 56, 1),
+(5, 'kkkkkkkkkkkkkkkkkkk', 56, 3),
+(6, 'genova', 11, 3),
+(7, 'genova', 11, 3),
+(8, 'genova', 12, 3),
+(9, 'genova', 12, 3),
+(10, 'genova', 12, 3),
+(11, 'kkkkkkkkkkkkkkkkkkk', 78, 1),
+(12, 'genova', 13, 3),
+(13, 'genova', 12, 3),
+(14, 'genova', 12, 3),
+(15, 'genova', 12, 3),
+(16, 'genova', 12, 3),
+(17, 'genova', 13, 3),
+(18, 'genova', 13, 3),
+(19, 'genova', 13, 3),
+(20, 'kkkkkkkkkkkkkkkkk', 23, 3),
+(21, 'kkkkkkkkkkkkkkkkkkkk', 23, 1),
+(22, 'kkkkkkkkkkkkkkk', 45, 1);
 
 -- --------------------------------------------------------
 
@@ -192,15 +228,24 @@ CREATE TABLE `utenti` (
   `Telefono` varchar(100) NOT NULL,
   `PasswordUtente` varchar(100) NOT NULL,
   `ConfermaPassword` varchar(100) NOT NULL,
-  `KsIndirizzi` int(11) NOT NULL
+  `KsIndirizzi` int(11) NOT NULL,
+  `Token` varchar(255) NOT NULL,
+  `Status` varchar(25) NOT NULL DEFAULT 'Inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
 
-INSERT INTO `utenti` (`idUtente`, `Nome`, `Cognome`, `Email`, `Telefono`, `PasswordUtente`, `ConfermaPassword`, `KsIndirizzi`) VALUES
-(1, 'Luca', 'Cupellaro', 'luca@gmail.com', '2134658795', '$2y$10$pQihEEDizUL/9qZ60AZF5uzUgobBkFZ.CriCi30XtY0SMr.XlM8Li', '$2y$10$Oug7lKN2RnVryN6.kpbCfuPVsOyc/QGWp/ExQq4yU2ealDAyqyWmi', 1);
+INSERT INTO `utenti` (`idUtente`, `Nome`, `Cognome`, `Email`, `Telefono`, `PasswordUtente`, `ConfermaPassword`, `KsIndirizzi`, `Token`, `Status`) VALUES
+(1, 'Luca', 'Cupellaro', 'luca@gmail.com', '2134658795', '$2y$10$pQihEEDizUL/9qZ60AZF5uzUgobBkFZ.CriCi30XtY0SMr.XlM8Li', '$2y$10$Oug7lKN2RnVryN6.kpbCfuPVsOyc/QGWp/ExQq4yU2ealDAyqyWmi', 1, '', 'Inactive'),
+(3, 'manmeet', 'moudgill', 'manmeetmoudgill76@gmail.com', '3214578412', '$2y$10$jR.k53Yxon0A.HKQ/wjel.BE6Rc5Q.ua5nTj63Z8C1zoeZgA7pOJ.', '$2y$10$YLu/ryX3bWGktnRuvWGREO9/DScoqkDpbod.ySGklC17UahdqyA5.', 3, '', 'Inactive'),
+(4, 'Marco', 'Cupellaro', 'lucacupellaro7@gmail.com', '8795462317', '$2y$10$VV50kxg.sSRmJwNJwdxL/.mSabDdKad/d0rN6pXesyByrZGOfAIbC', '$2y$10$y.Y0t4GVoz0B61OtfWveAOTfa7tSyKujsrW5plgDImu/vsIqgedoO', 1, '', 'Inactive'),
+(9, 'manmeet', 'moudgill', 'manmeetmoudgill123456789@gmail.com', '7896541231', '$2y$10$wVHJrmcT04Jvk9Y.LzhV9unFTxGWsky0ZekS7MsG6ckHbn6vQ/v/e', '$2y$10$Cx9jgtN76wAL3sMgMf7XJ.b9yvN2XqvsF/i7e07Y3SpcVGkU4GHX6', 3, '172754afbf215be210fa1e0b72fc4f', 'Inactive'),
+(10, 'manmeet', 'moudgill', 'manmeetmoudgill77@gmail.com', '32458741522', '$2y$10$wKGdOczKwjuMwlmDO0GTn.OYZDzxFDbIT8pV9nZapks6cujvbJ6fG', '$2y$10$xvlOPEIT6KH8uH/V6gzmSO5uoYZ1KvuzCmNUEKzRg5tBk4AMQdtrW', 3, '3d0d9dccc9d9d0aaf3d44d0b53268b', 'Inactive'),
+(11, 'nikita', 'Cupellaro', 'lucacupellarour@gmail.com', '1235468970', '$2y$10$GSp1zyrOAaQaOOi8xVo.D.LPugPxixKULYs4xtmllydH5qix4sSS.', '$2y$10$a4TI3omyqyPA4xBylnb5Rex5xFSGi/MzBlqiPLzw.c/3KiLPRXSnm', 3, 'c4e384489c254d85ee8b82a45647cd', 'Active'),
+(12, 'dan', 'cotesta', 'lericettedicarolina@gmail.com', '1234568970', '$2y$10$xxIDhNTZnG6rmtxLanDA9O1FHyrtSxTNsjDAkT2XS0KDAcIQtRPxO', '$2y$10$2Dg1WecZZwwsxU/qZQCLyOA6qzJklH3ltNt9qrjkpm0YoqiQijcqO', 1, '47dc07f7c8f8f0ea52297514c1e425', 'Inactive'),
+(13, 'marc', 'maggaga', 'luca.cupellaro02@gmail.com', '1234567890', '$2y$10$086k8UDKdHybUmL9ZWoDlufpy/DDKk.3yHf3VwXbKKESQS8JjbbFq', '$2y$10$Q01l4EnZG3LqxXOgFdndW.o77dJ5GrgGxctuvgLTNoBPByCCcVQ/i', 1, '2c6c73b230bd671594c533cab55191', 'Active');
 
 --
 -- Indici per le tabelle scaricate
@@ -220,7 +265,8 @@ ALTER TABLE `annunci` ADD FULLTEXT KEY `NomeKite` (`NomeKite`,`Descrizione`);
 -- Indici per le tabelle `carrello`
 --
 ALTER TABLE `carrello`
-  ADD PRIMARY KEY (`idCarrello`);
+  ADD PRIMARY KEY (`idCarrello`),
+  ADD KEY `KsUtenti` (`KsUtenti`);
 
 --
 -- Indici per le tabelle `carrello_annunci`
@@ -279,13 +325,13 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `annunci`
 --
 ALTER TABLE `annunci`
-  MODIFY `idAnnuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idAnnuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `idCarrello` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCarrello` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello_annunci`
@@ -303,19 +349,19 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT per la tabella `citta`
 --
 ALTER TABLE `citta`
-  MODIFY `idCitta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCitta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `immagini`
 --
 ALTER TABLE `immagini`
-  MODIFY `idImmagine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idImmagine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `indirizzi`
 --
 ALTER TABLE `indirizzi`
-  MODIFY `idindirizzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idindirizzi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT per la tabella `marca`
@@ -327,7 +373,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Limiti per le tabelle scaricate
@@ -340,6 +386,12 @@ ALTER TABLE `annunci`
   ADD CONSTRAINT `annunci_ibfk_1` FOREIGN KEY (`KsUtenti`) REFERENCES `utenti` (`idUtente`),
   ADD CONSTRAINT `annunci_ibfk_2` FOREIGN KEY (`KsMarca`) REFERENCES `marca` (`idMarca`),
   ADD CONSTRAINT `annunci_ibfk_3` FOREIGN KEY (`KsCategoria`) REFERENCES `categorie` (`idCategorie`);
+
+--
+-- Limiti per la tabella `carrello`
+--
+ALTER TABLE `carrello`
+  ADD CONSTRAINT `carrello_ibfk_1` FOREIGN KEY (`KsUtenti`) REFERENCES `utenti` (`idUtente`);
 
 --
 -- Limiti per la tabella `carrello_annunci`

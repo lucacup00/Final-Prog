@@ -1,17 +1,18 @@
 <?php
 
-include './connessione.php';
+require './mailsender.php';
+include './connessione2.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-$Nome=$_POST['Nome'];
-$Cognome=$_POST['Cognome'];
-$Email=$_POST['Email'];
-$Telefono=$_POST['Telefono'];
-$Password=$_POST['Password'];
-$ConfermaPassword=$_POST['ConfermaPassword'];
-$Citta=$_POST['città'];
-$Via=$_POST['Via'];
-$NumeroCivico=$_POST['NumeroCivico'];
+$Nome=mysqli_real_escape_string($conn,$_POST['Nome']);
+$Cognome=mysqli_real_escape_string($conn,$_POST['Cognome']);
+$Email=mysqli_real_escape_string($conn,$_POST['Email']);
+$Telefono=mysqli_real_escape_string($conn,$_POST['Telefono']);
+$Password=mysqli_real_escape_string($conn,$_POST['Password']);
+$ConfermaPassword=mysqli_real_escape_string($conn,$_POST['ConfermaPassword']);
+$Citta=mysqli_real_escape_string($conn,$_POST['città']);
+$Via=mysqli_real_escape_string($conn,$_POST['Via']);
+$NumeroCivico=mysqli_real_escape_string($conn,$_POST['NumeroCivico']);
 
 
 
@@ -53,11 +54,12 @@ $idIndirizzo=$data['idindirizzi'];/* per prendere id */
 $sql="SELECT * FROM `utenti` WHERE `Email`='$Email'";
 $result=mysqli_query($conn,$sql);
 
+$Token=bin2hex(random_bytes(15));
 /* find the number of row of that particular email */
 $row=mysqli_num_rows($result);
 if($row>=1){
-    echo "Registrazione non è Andato buon fine";
-    header('Location:./index.php?failedSignup=true'); 
+    
+    header('Location:../index.php?failedSignup=true'); 
 }else if($Password===$ConfermaPassword){
 
     
@@ -65,10 +67,26 @@ if($row>=1){
     $confirmEncryptedPassword=password_hash($ConfermaPassword,PASSWORD_BCRYPT);
 
   
-    $sqlInsert="INSERT INTO `utenti`(`Nome`, `Cognome`, `Email`,`Telefono`, `PasswordUtente`, `ConfermaPassword`, `KsIndirizzi`) 
-    VALUES ('$Nome','$Cognome','$Email','$Telefono','$newEncryptedPassword','$confirmEncryptedPassword','$idIndirizzo')";
+    $sqlInsert="INSERT INTO `utenti`(`Nome`, `Cognome`, `Email`,`Telefono`, `PasswordUtente`, `ConfermaPassword`, `KsIndirizzi`,`Token`,`Status`) 
+VALUES ('$Nome','$Cognome','$Email','$Telefono','$newEncryptedPassword','$confirmEncryptedPassword','$idIndirizzo','$Token','Inactive')";
     $RESULT=mysqli_query($conn,$sqlInsert);
 
+/* Per mandare Email e per Attivare Account*/
+    
+    $body="Hi $Nome.'&nbsp;'.$Cognome Click here to Activate Your Account
+    http://localhost/sitoKite/Activate.php?Token=$Token";
+    echo $Email;
+    $resEmail=send_mail($Email, "Email Activation",$body);
+
+    var_dump($resEmail);
+    echo $resEmail;
+    if($resEmail){
+        echo "Email succesfully sent to activate your account";
+        /*  header('location:./index.php?emailSent=true');  */
+    }else{
+        echo 'Email not sent successfully';
+       /*  header('location:./index.php?emailnotsent=true'); */
+    }
   
     
     if($RESULT ){
@@ -98,7 +116,7 @@ if($row>=1){
     
     if($RESULT && $RCarrel ){
         echo "Registrazione è Andato buon fine";
-          header('Location:./index.php?Signup=true');  
+           header('Location:../index.php?Signup=true');   
         exit();
     }else{
         ?>
@@ -107,11 +125,11 @@ alert('Alert something went wrong');
 </script>
 <?php 
 echo "inside all fine";
-       header('Location:./index.php');
+       header('Location:../index.php'); 
     } 
 }else{
     echo "Password Sbagliata";
-          header('Location:./index.php?passwordWrong=true'); 
+        header('Location:../index.php?passwordWrong=true'); 
     }
 }
  

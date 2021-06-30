@@ -307,4 +307,4 @@ include 'modal.php';
 
 </body>
 
-</html>bx
+</html>

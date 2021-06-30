@@ -48,7 +48,7 @@ echo '<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="Log
                      <div class="form-group">
                          <label class="font2" for="exampleInputPassword1"><b>Password</b></label>
                          <input type="password" class="form-control font2" name="Password" id="LoginPassword" placeholder="Password">
-                         <a class="text-dark" href="">Password dimenticata?</a>
+                         <a class="text-dark" href="./email/PasswordEmailSent.php">Password dimenticata?</a>
                      </div>
                      <button type="submit" class="btn btn-primary font2">Submit</button>
                  </form>
@@ -76,7 +76,7 @@ echo '<div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelled
              </div>
              <div class="modal-body">
 
-                 <form action="registrazione.php" method="post">
+                 <form action="./email/registrazione.php" method="post">
                      <div class="mb-3">
                          <label class="form-label font2"><b>Nome</b></label>
                          <input type="Text" class="form-control" name="Nome" id="Nome" aria-describedby="emailHelp"required>

@@ -52,7 +52,7 @@ session_start();
 
                 <?php
                     
-                    $ricerca=$_GET['search'];
+                    $ricerca=mysqli_real_escape_string($conn,$_GET['search']);
                     if($ricerca==""){
                         echo 'inserire un paremetro adeguato';
 

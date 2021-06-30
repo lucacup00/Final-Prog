@@ -3,15 +3,15 @@ session_start();
 include './connessione.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $nomeKite=$_POST['NomeKite'];
-    $Misura=$_POST['misura'];
-    $AnnoDiAcquisto=$_POST['AnnoDiAcquisto'];
-    $KsMarca=$_POST['Marca'];
-    $KsUtente=$_SESSION['IdUser'];
-    $username=$_SESSION['username'];
-    $descrizione=$_POST['Descrizione'];
-    $costo=$_POST['Costo'];
-    $Categoria=$_POST['Categoria'];
+    $nomeKite=mysqli_real_escape_string($conn,$_POST['NomeKite']);
+    $Misura=mysqli_real_escape_string($conn,$_POST['misura']);
+    $AnnoDiAcquisto=mysqli_real_escape_string($conn,$_POST['AnnoDiAcquisto']);
+    $KsMarca=mysqli_real_escape_string($conn,$_POST['Marca']);
+    $KsUtente=mysqli_real_escape_string($conn,$_SESSION['IdUser']);
+    $username=mysqli_real_escape_string($conn,$_SESSION['username']);
+    $descrizione=mysqli_real_escape_string($conn,$_POST['Descrizione']);
+    $costo=mysqli_real_escape_string($conn,$_POST['Costo']);
+    $Categoria=mysqli_real_escape_string($conn,_POST['Categoria']);
     
     
     $sql="INSERT INTO `annunci`(`NomeKite`, `AnnoAquisto`, `Descrizione`, `Costo`,`KsUtenti`,`KsMarca`,`KsCategoria`,`misura`) 

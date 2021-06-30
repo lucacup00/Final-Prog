@@ -1,4 +1,22 @@
 <?php
+
+if(isset($_GET['failedSignup']) && $_GET['failedSignup'] == true){
+  $alert0= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Utente già registrato.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert0;
+if($alert0!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./index.php";
+}, 2000)
+</script>
+<?php
+}
+
+}
  //Allert ACCOUNT CREATO CON SUCCESSO
  if(isset($_GET['Signup']) && $_GET['Signup'] == true){
     $alert= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
@@ -215,8 +233,7 @@ setTimeout(() => {
 </script>
 <?php
 }
-}
-elseif(isset($_GET['Mex']) && $_GET['Mex'] == false){
+else if(isset($_GET['Mex']) && $_GET['Mex'] == false){
   $alert13= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
   <strong>Messaggio:</strong> Messaggio non inviato correttamente.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -232,4 +249,77 @@ setTimeout(() => {
 <?php
 }
 }
+
+
+
+
+
+}else if(isset($_GET['emailVerified']) && $_GET['emailVerified'] == true){
+  $alert14= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Email è stato validata.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert14;
+if($alert14!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./index.php";
+}, 2000)
+</script>
+<?php
+}
+}
+else if(isset($_GET['emailnotVerified']) && $_GET['emailnotVerified'] == true){
+  $alert15= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong> Email non è stato  validata.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert15;
+if($alert15!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./index.php";
+}, 2000)
+</script>
+<?php
+}
+}
+
+else if(isset($_GET['passwordChanged']) && $_GET['passwordChanged'] == true){
+  $alert16= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong>La Password è stata Modificata!!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert16;
+if($alert16!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./index.php";
+}, 2000)
+</script>
+<?php
+}
+}
+
+else if(isset($_GET['passwordnotChanged']) && $_GET['passwordnotChanged'] == true){
+  $alert17= '<div class="alert my-0 alert-success alert-dismissible fade show font2" role="alert">
+  <strong>Messaggio:</strong>Password non è stato Modificato!!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+echo $alert17;
+if($alert17!=""){
+  ?>
+<script>
+setTimeout(() => {
+    window.location = "./index.php";
+}, 2000)
+</script>
+<?php
+}
+}
+
+
 ?>
