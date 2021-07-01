@@ -57,11 +57,11 @@ include './alert.php';
 $id=$_GET['IdAnnuncio'];
 echo $id;
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $nomeKite=$_POST['NomeKite'];
-    $Misura=$_POST['misura'];
-    $AnnoDiAcquisto=$_POST['AnnoDiAcquisto'];
-    $descrizione=$_POST['Descrizione'];
-    $costo=$_POST['Costo'];
+    $nomeKite=mysqli_real_escape_string($conn,$_POST['NomeKite']);
+    $Misura=mysqli_real_escape_string($conn,$_POST['misura']);
+    $AnnoDiAcquisto=mysqli_real_escape_string($conn,$_POST['AnnoDiAcquisto']);
+    $descrizione=mysqli_real_escape_string($conn,$_POST['Descrizione']);
+    $costo=mysqli_real_escape_string($conn,$_POST['Costo']);
     
  
     $sql="UPDATE annunci SET NomeKite='$nomeKite',misura='$Misura',AnnoAquisto='$AnnoDiAcquisto',Descrizione='$descrizione',Costo='$costo' WHERE idAnnuncio='$id'"; 

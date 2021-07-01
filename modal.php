@@ -1,6 +1,44 @@
 <html>
 
 <head>
+<script>
+function showReg(str) {
+   
+  if (str == "") {
+    alert("Scegli la regione")
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+       
+        document.getElementById("provinciaDropdown").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","http://localhost/sitoKite/email/getProvince.php?q="+str,true);
+    xmlhttp.send();
+  }
+}
+function showComuni(valore) {
+	console.log(valore);
+	if (valore == '') {
+		alert('Scegli la Provincia');
+		return;
+	} else {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			
+				document.getElementById('comuniDropdown').innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open('GET', 'http://localhost/sitoKite/email/getComuni.php?c=' + valore, true);
+		xmlhttp.send();
+	}
+}
+
+
+    </script>    
     <style>
     .button-close {
         color: white !important;
@@ -109,29 +147,44 @@ echo '<div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelled
                      </div>
 
                      <div class="mb-3">
-                     <label class="form-label font2">Inserisci la tua città</label>
-                     <select class="form-select" name="città" aria-label="Default select example">
+                     <label class="form-label font2">Inserisci la tua Regione</label>
+                     <select class="form-select"  onchange="showReg(this.value)" name="città" aria-label="Default select example">
                      ';
 
 
 
 
 
-$sql = "SELECT * FROM `Citta`";
-$res = mysqli_query($conn, $sql);
+                    $sql = "SELECT * FROM `regioni`";
+                    $res = mysqli_query($conn, $sql);
 
 
-while ($dataFetched = mysqli_fetch_assoc($res)) {
-    $idCitta = $dataFetched['idCitta'];
-    $cittaAll = $dataFetched['nomeCitta'];
+                    while ($dataFetched = mysqli_fetch_assoc($res)) {
+                        $idregione = $dataFetched['id'];
+                        $regione = $dataFetched['nome'];
 
-    echo '<option value="' . $idCitta . '">' . $cittaAll . '</option>';
-}
+                        echo '<option value="' . $idregione . '">' . $regione . '</option>';
+                    }
 
 
 
-echo '</select>
-</div>
+                    echo '</select>
+                    </div>
+                    <div class="mb-3 my-4">
+                    <div id="provinciaDropdown">
+                    </div>
+                        </div>
+                    <div class="mb-3 my-4">
+                        <div id="comuniDropdown">
+                        </div>
+                    </div>
+                     
+                        
+                        <div class="mb-3">
+                        <label class="form-label font2"><b>CAP</b></label>
+                        <input type="number" class="form-control" name="CAP" id="CAP" required>
+                        <label class="text-danger" id="wr7"></label>
+                    </div>
                      <div class="mb-3">
                          <label class="form-label font2"><b>Via</b></label>
                          <input type="Text" class="form-control" name="Via" id="Via" required>
@@ -172,6 +225,7 @@ echo '</select>
 
 <body>
     <script>
+
     const LoginEmail = document.getElementById('LoginEmail');
     const LoginPassword = document.getElementById('LoginPassword');
     const name = document.getElementById('Nome');
